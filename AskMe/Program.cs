@@ -76,7 +76,7 @@ namespace AskMe
                 {
                     Question = item.Trim('=')
                 };
-            }).ToList();
+            }).Distinct(QuestionPrompt.QuestionComparer).ToList();
         }
     }
 }
