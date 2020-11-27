@@ -90,6 +90,7 @@ namespace AskMe
         private void HandleOnLoad(object sender, EventArgs e)
         {
             BringToFront();
+            CenterToScreen();
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
