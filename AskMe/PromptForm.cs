@@ -36,9 +36,9 @@ namespace AskMe
             {
                 Dock = DockStyle.Fill,
                 FlowDirection = FlowDirection.TopDown,
-                Padding = new Padding(8),
+                Padding = new Padding(0),
                 AutoSize = true,
-                AutoSizeMode = AutoSizeMode.GrowOnly
+                AutoSizeMode = AutoSizeMode.GrowAndShrink,
             };
             Controls.Add(panel);
 
@@ -48,27 +48,31 @@ namespace AskMe
 
                 label.Anchor = AnchorStyles.Left | AnchorStyles.Right;
                 label.AutoSize = true;
+                label.Margin = new Padding(0, 0, 0, 4);
 
                 textbox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
                 textbox.AutoSize = true;
-                var size =  TextRenderer.MeasureText(textbox.Text, textbox.Font);
-                textbox.MinimumSize = size;
-
                 textbox.Margin = new Padding(0, 4, 0, 8);
+                var size = TextRenderer.MeasureText(textbox.Text, textbox.Font);
+                textbox.MinimumSize = new Size(Math.Min(250, size.Width) + 20, size.Height);
+
                 panel.Controls.Add(label);
                 panel.Controls.Add(textbox);
             }
 
             Save = new Button
             {
-                Margin = new Padding(0, 8, 0, 0),
-                Text = "Save"
+                Margin = new Padding(0),
+                Text = "Save",
+                AutoSize = true,
+                Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom
             };
             Save.Click += HandleClick;
             panel.Controls.Add(Save);
 
             SuspendLayout();
             Load += HandleOnLoad;
+            Padding = new Padding(8);
             AcceptButton = Save;
             AutoSize = true;
             MaximizeBox = false;
