@@ -33,7 +33,6 @@ namespace AskMe
             catch (Exception)
             {
                 Console.Error.WriteLine("Failed to parse questions");
-                Application.Exit();
                 Exit(1);
                 return;
             }
@@ -44,6 +43,7 @@ namespace AskMe
             if (result != DialogResult.OK)
             {
                 Exit(-1);
+                return;
             }
 
             var answers = f.Answers;
