@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("Ask questions and write answers as JSON to console")]
 [assembly: AssemblyCompany("AbdusCo")]
 [assembly: AssemblyProduct("AskMe")]
-[assembly: AssemblyCopyright("Copyright ©  2020")]
+[assembly: AssemblyCopyright("AbdusCo © 2020")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
 // to COM components.  If you need to access a type in this assembly from
