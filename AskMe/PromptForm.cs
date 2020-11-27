@@ -51,6 +51,8 @@ namespace AskMe
 
                 textbox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
                 textbox.AutoSize = true;
+                var size =  TextRenderer.MeasureText(textbox.Text, textbox.Font);
+                textbox.MinimumSize = size;
 
                 textbox.Margin = new Padding(0, 4, 0, 8);
                 panel.Controls.Add(label);
