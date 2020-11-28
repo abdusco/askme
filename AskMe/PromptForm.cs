@@ -26,6 +26,8 @@ namespace AskMe
         {
             Text = prompt.Answer;
             Prompt = prompt;
+            AutoCompleteMode = AutoCompleteMode.Suggest;
+            AutoCompleteSource = AutoCompleteSource.HistoryList;
         }
     }
 
