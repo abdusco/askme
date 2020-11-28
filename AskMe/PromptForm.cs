@@ -13,13 +13,13 @@ namespace AskMe
         private List<(Label, TextBox)> Prompts { get; }
         private Button Save { get; set; }
 
-        public Dictionary<string, string> Answers = new Dictionary<string, string>();
+        public PromptResult Result = new PromptResult();
 
         public PromptForm(List<QuestionPrompt> questionPrompts)
         {
             Prompts = questionPrompts.Select((prompt, i) =>
             {
-                var label = new Label {Text = prompt.Question};
+                var label = new Label {Text = prompt.Question, Tag = prompt};
                 var textbox = new TextBox {Text = prompt.Answer ?? ""};
                 return (Label: label, TextBox: textbox);
             }).ToList();
@@ -106,10 +106,11 @@ namespace AskMe
 
         private void HandleClick(object sender, EventArgs e)
         {
-            Answers = Prompts.ToDictionary(
-                tuple => tuple.Item1.Text.Trim(),
-                tuple => tuple.Item2.Text.Trim()
-            );
+            foreach (var (label, textBox) in Prompts)
+            {
+                Result.AddAnswer(((QuestionPrompt) label.Tag).Key, textBox.Text);
+            }
+
             DialogResult = DialogResult.OK;
             Close();
         }

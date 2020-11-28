@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Windows.Forms;
 
 namespace AskMe
@@ -19,64 +17,41 @@ namespace AskMe
             if (!args.Any())
             {
                 Console.WriteLine(@"Usage: prompt.exe ""question"" [""question=answer""...]");
+                Exit(1);
                 return;
             }
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            List<QuestionPrompt> qs;
-            try
-            {
-                qs = ParseArgs(args);
-            }
-            catch (Exception)
+            var parser = new QuestionParser();
+            var errors = parser.TryParse(args, out var qs);
+            if (errors.Any())
             {
                 Console.Error.WriteLine("Failed to parse questions");
+                errors.ForEach(e => Console.Error.WriteLine($"Failed to parse: {e}"));
                 Exit(1);
                 return;
             }
 
-            using var f = new PromptForm(qs);
-
-            var result = f.ShowDialog();
+            using var form = new PromptForm(qs);
+            var result = form.ShowDialog();
             if (result != DialogResult.OK)
             {
                 Exit(-1);
                 return;
             }
 
-            var answers = f.Answers;
+            var answers = form.Result.Answers;
             Console.WriteLine(JsonSerializer.Serialize(answers));
 
-            Exit(0);
+            Exit();
         }
 
         private static void Exit(int code = 0)
         {
             Application.Exit();
             Environment.Exit(code);
-        }
-
-        private static List<QuestionPrompt> ParseArgs(string[] args)
-        {
-            return args.Select(item =>
-            {
-                var parts = item.Split(new[] {"="}, StringSplitOptions.RemoveEmptyEntries);
-                if (parts.Length == 2)
-                {
-                    return new QuestionPrompt
-                    {
-                        Question = parts[0],
-                        Answer = parts[1]
-                    };
-                }
-
-                return new QuestionPrompt
-                {
-                    Question = item.Trim('=')
-                };
-            }).Distinct(QuestionPrompt.QuestionComparer).ToList();
         }
     }
 }

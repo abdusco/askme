@@ -90,16 +90,15 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Answers.cs" />
         <Compile Include="PromptForm.cs">
           <SubType>Form</SubType>
         </Compile>
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="QuestionParser.cs" />
         <Compile Include="QuestionPrompt.cs" />
         <Compile Include="Win32Native.cs" />
-        <EmbeddedResource Include="PromptForm.resx">
-          <DependentUpon>PromptForm.cs</DependentUpon>
-        </EmbeddedResource>
         <None Include="packages.config" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
