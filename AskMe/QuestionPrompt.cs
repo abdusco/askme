@@ -4,16 +4,11 @@ namespace AskMe
 {
     public class QuestionPrompt
     {
-        private string _key;
+        private readonly string _key;
+        public string Key => _key ?? Question;
 
-        public string Key
-        {
-            get => _key ?? Question;
-            set => _key = value;
-        }
-
-        public string Question { get; set; }
-        public string Answer { get; set; }
+        public string Question { get; }
+        public string Answer { get; }
 
         public QuestionPrompt(string question, string answer = null, string key = null)
         {
