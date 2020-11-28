@@ -108,7 +108,7 @@ namespace AskMe
         {
             foreach (var (label, textBox) in Prompts)
             {
-                Result.AddAnswer(((QuestionPrompt) label.Tag).Key, textBox.Text);
+                Result.AddAnswer((QuestionPrompt) label.Tag, textBox.Text);
             }
 
             DialogResult = DialogResult.OK;
