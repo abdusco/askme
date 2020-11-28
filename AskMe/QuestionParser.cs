@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace AskMe
 {
@@ -26,18 +27,22 @@ namespace AskMe
         public bool TryParse(string argument, out QuestionPrompt prompt)
         {
             prompt = null;
-            var remaining = argument;
-            var parts = remaining.Split(new[] {":"}, 2, StringSplitOptions.RemoveEmptyEntries);
-
             string key = null;
-            string question;
-            string answer;
-            if (parts.Length == 2)
+            string question = null;
+            string answer = null;
+            
+            var remaining = argument;
+            if (remaining.Contains(":"))
             {
+                var parts = remaining.Split(new[] {":"}, 2, StringSplitOptions.RemoveEmptyEntries);
+                if (parts.Length < 2)
+                {
+                    return false;
+                }
                 key = parts[0];
                 remaining = parts[1];
             }
-
+            
             string parsedQuestion;
             string parsedAnswer;
             if (TryParseQA(remaining, out parsedQuestion, out parsedAnswer))
@@ -51,7 +56,6 @@ namespace AskMe
                 answer = null;
             }
 
-
             prompt = new QuestionPrompt(question, answer, key);
             return true;
         }
@@ -60,15 +64,21 @@ namespace AskMe
         private bool TryParseQA(string argument, out string question, out string answer)
         {
             var parts = argument.Split(new[] {"="}, 2, StringSplitOptions.RemoveEmptyEntries);
-            if (parts.Length == 2)
+            question = null;
+            answer = null;
+            if (parts.Length > 1)
             {
                 question = parts[0];
                 answer = parts[1];
                 return true;
             }
 
-            question = null;
-            answer = null;
+            if (parts.Length == 1)
+            {
+                question = parts[0];
+                return true;
+            }
+
             return false;
         }
     }

@@ -59,6 +59,32 @@ namespace AskMe.Tests
             Assert.Equal("key", prompt.Key);
             Assert.Equal("answer", prompt.Answer);
         }
+         
+        [Fact]
+        public void IgnoresEmptyAnswer()
+        {
+            const string q = "question=";
+            var parser = new QuestionParser();
+
+            var result = parser.TryParse(q, out var prompt);
+
+            Assert.True(result);
+            Assert.Equal("question", prompt.Question);
+            Assert.Null(prompt.Answer);
+        }
+        
+        [Fact]
+        public void FailsWithEmptyQuestion()
+        {
+            const string q = "key:";
+            var parser = new QuestionParser();
+
+            var result = parser.TryParse(q, out var prompt);
+
+            Assert.False(result);
+            Assert.Null(prompt);
+        }
+        
 
         [Fact]
         public void CanAddAnswers()
