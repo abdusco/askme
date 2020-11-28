@@ -7,10 +7,10 @@ Download binary files from [Releases](https://github.com/abdusco/askme/releases/
 ## Usage
 
 Each argument is parsed as a question. You can specify a default answer with `$question=$answer`.
-A question can be prefixed with a `key:q=a` to specify a specific key for that answer.
+A question can be prefixed with a key as `key:q=a` to specify a specific key for that answer.
 
 ```powershell
-./askme.exe "name" "age" "year:what year is it=2020"
+./askme.exe "name" "age=5" "year:what year is it=2020"
 ```
 
 ![](askme.png)

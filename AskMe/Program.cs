@@ -16,7 +16,8 @@ namespace AskMe
             Win32Native.AttachConsole();
             if (!args.Any())
             {
-                Console.WriteLine(@"Usage: prompt.exe ""question"" [""question=answer""...]");
+                Console.WriteLine(
+                    @"Usage: askme.exe ""question"" [""question=answer"", ""key:question"", ""key:question=answer""...]");
                 Exit(1);
                 return;
             }
