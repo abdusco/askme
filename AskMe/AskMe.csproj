@@ -90,7 +90,7 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Answers.cs" />
+        <Compile Include="PromptResult.cs" />
         <Compile Include="PromptForm.cs">
           <SubType>Form</SubType>
         </Compile>

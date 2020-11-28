@@ -35,7 +35,7 @@ namespace AskMe
         private List<(PromptLabel, PromptTextBox)> Prompts { get; }
         private Button Save { get; set; }
 
-        public PromptResult Result = new PromptResult();
+        public readonly PromptResult Result = new PromptResult();
 
         public PromptForm(List<QuestionPrompt> questionPrompts)
         {

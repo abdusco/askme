@@ -59,5 +59,17 @@ namespace AskMe.Tests
             Assert.Equal("key", prompt.Key);
             Assert.Equal("answer", prompt.Answer);
         }
+
+        [Fact]
+        public void CanAddAnswers()
+        {
+            var result = new PromptResult();
+            const string key = "q";
+            var p = new QuestionPrompt("hey", key: key);
+            
+            result.AddAnswer(p, "hi");
+
+            Assert.Equal("hi", result.Answers[key]);
+        }
     }
 }
