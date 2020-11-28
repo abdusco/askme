@@ -7,10 +7,32 @@ using System.Windows.Forms;
 
 namespace AskMe
 {
+    internal sealed class PromptLabel : Label
+    {
+        public QuestionPrompt Prompt { get; }
+
+        public PromptLabel(QuestionPrompt prompt)
+        {
+            Text = prompt.Question;
+            Prompt = prompt;
+        }
+    }
+
+    internal sealed class PromptTextBox : TextBox
+    {
+        public QuestionPrompt Prompt { get; }
+
+        public PromptTextBox(QuestionPrompt prompt)
+        {
+            Text = prompt.Answer;
+            Prompt = prompt;
+        }
+    }
+
     public class PromptForm : Form
     {
         private IContainer components = null;
-        private List<(Label, TextBox)> Prompts { get; }
+        private List<(PromptLabel, PromptTextBox)> Prompts { get; }
         private Button Save { get; set; }
 
         public PromptResult Result = new PromptResult();
@@ -19,8 +41,8 @@ namespace AskMe
         {
             Prompts = questionPrompts.Select((prompt, i) =>
             {
-                var label = new Label {Text = prompt.Question, Tag = prompt};
-                var textbox = new TextBox {Text = prompt.Answer ?? ""};
+                var label = new PromptLabel(prompt);
+                var textbox = new PromptTextBox(prompt);
                 return (Label: label, TextBox: textbox);
             }).ToList();
             InitializeComponent();
@@ -108,7 +130,7 @@ namespace AskMe
         {
             foreach (var (label, textBox) in Prompts)
             {
-                Result.AddAnswer((QuestionPrompt) label.Tag, textBox.Text);
+                Result.AddAnswer(label.Prompt, textBox.Text);
             }
 
             DialogResult = DialogResult.OK;
@@ -117,9 +139,9 @@ namespace AskMe
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing)
             {
-                components.Dispose();
+                components?.Dispose();
             }
 
             base.Dispose(disposing);
