@@ -6,10 +6,11 @@ Download binary files from [Releases](https://github.com/abdusco/askme/releases/
 
 ## Usage
 
-Each argument is parsed as a question. You can specify a default answer with `$question=$answer`
+Each argument is parsed as a question. You can specify a default answer with `$question=$answer`.
+A question can be prefixed with a `key:q=a` to specify a specific key for that answer.
 
 ```powershell
-./askme.exe "name" "age" "what year is it=2020"
+./askme.exe "name" "age" "year:what year is it=2020"
 ```
 
 ![](askme.png)
@@ -19,5 +20,5 @@ Hit `[Enter]` or click **Save** to accept values. Hit `[ESC]` to cancel.
 output: 
 
 ```json
-{"name":"abdus","age":"27","what year is it":"2020"}
+{"name":"abdus","age":"27","year":"2020"}
 ```
