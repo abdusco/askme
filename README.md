@@ -13,7 +13,7 @@ A question can be prefixed with a key as `key:q=a` to specify a key for that ans
 ./askme.exe "name" "age=5" "year:what year is it=2020"
 ```
 
-![](askme.png)
+![](askme.gif)
 
 Hit `[Enter]` or click **Save** to accept values. Hit `[ESC]` to cancel.
 
