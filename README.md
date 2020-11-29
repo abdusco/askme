@@ -22,3 +22,9 @@ output:
 ```json
 {"name":"abdus","age":"27","year":"2020"}
 ```
+
+## Changelog
+
+### 2.0
+
+- Rewrite as WPF application

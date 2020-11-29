@@ -4,14 +4,15 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using AskMe.Core;
 
 namespace AskMe
 {
     internal sealed class PromptLabel : Label
     {
-        public QuestionPrompt Prompt { get; }
+        public PromptQuery Prompt { get; }
 
-        public PromptLabel(QuestionPrompt prompt)
+        public PromptLabel(PromptQuery prompt)
         {
             Text = prompt.Question;
             Prompt = prompt;
@@ -20,9 +21,9 @@ namespace AskMe
 
     internal sealed class PromptTextBox : TextBox
     {
-        public QuestionPrompt Prompt { get; }
+        public PromptQuery Prompt { get; }
 
-        public PromptTextBox(QuestionPrompt prompt)
+        public PromptTextBox(PromptQuery prompt)
         {
             Text = prompt.Answer;
             Prompt = prompt;
@@ -37,9 +38,9 @@ namespace AskMe
         private List<(PromptLabel, PromptTextBox)> Prompts { get; }
         private Button Save { get; set; }
 
-        public readonly PromptResult Result = new PromptResult();
+        public readonly PromptResponse Response = new PromptResponse();
 
-        public PromptForm(List<QuestionPrompt> questionPrompts)
+        public PromptForm(List<PromptQuery> questionPrompts)
         {
             Prompts = questionPrompts.Select((prompt, i) =>
             {
@@ -132,7 +133,7 @@ namespace AskMe
         {
             foreach (var (label, textBox) in Prompts)
             {
-                Result.AddAnswer(label.Prompt, textBox.Text);
+                Response.AddAnswer(label.Prompt, textBox.Text);
             }
 
             DialogResult = DialogResult.OK;

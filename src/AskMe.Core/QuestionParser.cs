@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 
-namespace AskMe
+namespace AskMe.Core
 {
     public class QuestionParser
     {
-        public List<string> TryParse(string[] arguments, out List<QuestionPrompt> prompts)
+        public List<string> TryParse(string[] arguments, out List<PromptQuery> prompts)
         {
             var errors = new List<string>();
-            prompts = new List<QuestionPrompt>();
+            prompts = new List<PromptQuery>();
             foreach (var argument in arguments)
             {
                 if (!TryParse(argument, out var p))
@@ -24,7 +23,7 @@ namespace AskMe
             return errors;
         }
 
-        public bool TryParse(string argument, out QuestionPrompt prompt)
+        public bool TryParse(string argument, out PromptQuery prompt)
         {
             prompt = null;
             string key = null;
@@ -56,7 +55,7 @@ namespace AskMe
                 answer = null;
             }
 
-            prompt = new QuestionPrompt(question, answer, key);
+            prompt = new PromptQuery(question, answer, key);
             return true;
         }
 

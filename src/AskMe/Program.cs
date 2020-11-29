@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Text.Json;
 using System.Windows.Forms;
+using AskMe.Core;
+using AskMe.Win32;
 
 namespace AskMe
 {
@@ -13,7 +15,8 @@ namespace AskMe
         [STAThread]
         static void Main(string[] args)
         {
-            Win32Native.AttachConsole();
+            Win32Console.AttachConsole();
+
             if (!args.Any())
             {
                 Console.WriteLine(
@@ -43,7 +46,7 @@ namespace AskMe
                 return;
             }
 
-            var answers = form.Result.Answers;
+            var answers = form.Response.Answers;
             Console.WriteLine(JsonSerializer.Serialize(answers));
 
             Exit();

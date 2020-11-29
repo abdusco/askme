@@ -1,8 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AskMe", "AskMe\AskMe.csproj", "{0CDABE95-9F6C-49AA-8FF8-37B7D86CB03A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AskMe", "src\AskMe\AskMe.csproj", "{0CDABE95-9F6C-49AA-8FF8-37B7D86CB03A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AskMe.Tests", "AskMe.Tests\AskMe.Tests.csproj", "{28405016-71A8-4140-8097-63FCCD77D2C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AskMe.Tests", "src\AskMe.Tests\AskMe.Tests.csproj", "{28405016-71A8-4140-8097-63FCCD77D2C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AskMe.Wpf", "src\AskMe.Wpf\AskMe.Wpf.csproj", "{437B0D81-774F-40BA-9F25-0F10179248A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AskMe.Core", "src\AskMe.Core\AskMe.Core.csproj", "{267F0D02-6392-4CDB-80E3-7CBC5D1B8F84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AskMe.Win32", "src\AskMe.Win32\AskMe.Win32.csproj", "{285C2AF4-BE73-4B80-BE30-78D500225C51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +24,17 @@ Global
 		{28405016-71A8-4140-8097-63FCCD77D2C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28405016-71A8-4140-8097-63FCCD77D2C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28405016-71A8-4140-8097-63FCCD77D2C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{437B0D81-774F-40BA-9F25-0F10179248A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{437B0D81-774F-40BA-9F25-0F10179248A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{437B0D81-774F-40BA-9F25-0F10179248A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{437B0D81-774F-40BA-9F25-0F10179248A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{267F0D02-6392-4CDB-80E3-7CBC5D1B8F84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{267F0D02-6392-4CDB-80E3-7CBC5D1B8F84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{267F0D02-6392-4CDB-80E3-7CBC5D1B8F84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{267F0D02-6392-4CDB-80E3-7CBC5D1B8F84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{285C2AF4-BE73-4B80-BE30-78D500225C51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{285C2AF4-BE73-4B80-BE30-78D500225C51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{285C2AF4-BE73-4B80-BE30-78D500225C51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{285C2AF4-BE73-4B80-BE30-78D500225C51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -1,4 +1,4 @@
-﻿using System;
+﻿using AskMe.Core;
 using Xunit;
 
 namespace AskMe.Tests
@@ -89,9 +89,9 @@ namespace AskMe.Tests
         [Fact]
         public void CanAddAnswers()
         {
-            var result = new PromptResult();
+            var result = new PromptResponse();
             const string key = "q";
-            var p = new QuestionPrompt("hey", key: key);
+            var p = new PromptQuery("hey", key: key);
             
             result.AddAnswer(p, "hi");
 

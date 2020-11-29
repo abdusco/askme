@@ -1,0 +1,47 @@
+﻿<Window x:Class="AskMe.Wpf.QueryFormWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AskMe.Wpf"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        mc:Ignorable="d"
+        ContentRendered="MainWindow_OnContentRendered"
+        SizeToContent="WidthAndHeight"
+        Title=""
+        ResizeMode="CanResize"
+        Icon="Images/icon.png"
+        WindowStartupLocation="CenterScreen"
+        Topmost="True"
+        Deactivated="QueryFormWindow_OnDeactivated"
+        local:FocusBehavior.FocusFirst="True"
+        MinWidth="300">
+    <Window.InputBindings>
+        <KeyBinding Command="Close" Key="Escape" />
+    </Window.InputBindings>
+    <Window.CommandBindings>
+        <CommandBinding Command="Close" Executed="CloseCommand_OnExecuted" />
+    </Window.CommandBindings>
+
+    <Grid Margin="8" Name="ControlsGrid" Focusable="False">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <ItemsControl Name="QuestionsIc" Grid.Row="0" Focusable="False">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="{Binding Question}" />
+                        <TextBox Text="{Binding Answer}">
+                            <i:Interaction.Behaviors>
+                                <local:PutCaretAtEndOnFocusBehavior />
+                            </i:Interaction.Behaviors>
+                        </TextBox>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <Button IsDefault="True" Click="Submit_OnClick" Grid.Row="1" Padding="4" Margin="0 16 0 0">Submit</Button>
+    </Grid>
+</Window>
