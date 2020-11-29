@@ -33,7 +33,7 @@ namespace AskMe.Wpf
             var submitted = dialog.ShowDialog() ?? false;
             if (!submitted)
             {
-                ExitWithCode(-1);
+                ExitWithCode(2);
                 return;
             }
 
