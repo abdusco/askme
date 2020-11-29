@@ -16,7 +16,7 @@ namespace AskMe.Wpf
         public PromptResponse ToPromptResponse()
         {
             var res = new PromptResponse();
-            Questions.ForEach(q => res.AddAnswer(q.Key, q.Answer));
+            Questions.ForEach(q => res.AddAnswer(q.Key, q.Answer ?? ""));
             return res;
         }
 
